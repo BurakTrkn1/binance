@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+button{
+    color: red;
+    background-color: aqua;
+}
+button:hover{
+ color: white;
+ background-color: antiquewhite;
+}
+</style>
+<body>
+    
+        <button type="button" onclick="addItem(text,save)">add</button>
+        <button type="button" onclick="saveStorageItem(text)">save</button>
+        <button type="button" onclick="getStorageItem()">getStorage</button>
+        
+        <ul id="gfg">
+            <li>Computer Network</li>
+            <li>Data Structures</li>
+          </ul>
+          
+          <button onclick="test()">Submit</button>
+
+
+
+
+<script>
+    function getStorageItems() {
+    var data = localStorage.getItem('items');
+    return data ? JSON.parse(data) : null;
+}
+
+function saveStorageItem(text) {
+    var array = getStorageItems() || [];
+    array.push(text);
+    localStorage.setItem('items', JSON.stringify(array));
+}
+
+   
+function addItem(text, save) {
+    var node = document.createElement('li');
+    node.textContent = text;
+    document.getElementById('gfg').appendChild(node);
+
+    if (save !== false)
+        saveStorageItem(text);
+}
+</script>
+ 
+</body>
+</html>

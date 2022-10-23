@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Public/css/binance.css">
+    <link rel="manifest" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body style="background-image: url(../img/borsa-96yM_cover.jpg);">
+    <header> 
+      <i id="w"class="fa-solid fa-wallet" onclick="wa(event)"><p>Wallet</p></i>
+      
+
+      <i id="profit_lost" class="fa-solid fa-clipboard" onclick="profit_lost(event)"><p>Profit And Loss</p></i>
+      <i id="situations" class="fa-solid fa-basket-shopping" onclick="move(event)"><p>Situations</p></i>
+      <i id="icon" class="fa-solid fa-sack-dollar" data-bs-toggle="modal" data-bs-target="#modal" onclick="chate(event)"><p>Coin</p></i>
+      
+     
+    </header>
+
+   
+
+
+   <div  id="modal"class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="directory-model-label">B.İ.T</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row" id="sel" style="display:block;">
+            <div class="col-md-6" >
+            <select id="myselect" class="form-select" aria-label="Default select example" onchange="simple()">
+              <option id="chan"selected>Döviz birimini seçiniz</option>
+              <option id="" value="BTC">BTC</option>
+              <option id="" value="ETC">ETC</option>
+              <option id="" value="ACT">ACT</option>
+              <option id="" value="ACQ">ACQ</option>
+              <option id="" value="COR">COR</option>
+            </select>
+          </div>
+        </div>
+           
+            <div class="row">
+              <div class="col-5">
+              <div class="input-group mt-2 " style="margin-right: 5rem;">
+                <label  class="input-group-text">Döviz Kur</label>
+                <input id="unit1" type="text" aria-label="First name" class="form-control" disabled>
+              </div>
+            </div>
+
+                <div class="col-md-7">
+                <div class="input-group mt-2">
+                  <span class="input-group-text">$</span>
+                  <input id="price" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" disabled>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <div class="col-5 ">
+              <div class="input-group mt-4">
+                <label for="amount" id="ad"class="input-group-text">ADET</label>
+                <input id="amount" type="number"  class="form-control">
+              </div>
+            </div>
+
+            <div class="col-md-7">
+              <div class="input-group mt-4">
+                <label for="sum" id="fiy"class="input-group-text">FİYAT</label>
+                <input id="sum" type="number" class="form-control">
+              </div>
+            </div>
+          </div>
+          </div>
+          
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="process"
+          class="btn
+          btn-outline-warning" type="button" data-bs-dismiss="modal" aria-label="Close" onclick="buy(event)">Satın al</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  </div> 
+
+  <!--cüzdan tablosu -->
+  <div id="wallet" style="display: none;">
+    <tr>
+      <table class="table table-bordered" id="table">
+      <h3>Cüzdan
+      <thead>
+     <tr>
+        <th>Döviz Kuru</th>
+        <th>Birimi</th>
+        <th>Adet</th>
+        <th>Toplam Tutarı</th>
+        <th>işlemler</th>
+     </tr>
+      </thead>
+      <tbody id="Tbody">
+      <tr><td></td></tr>
+      </tbody>
+     </table>
+     </h3>
+  </div>
+  </div>
+<!-- kar zarar -->
+  <div id="prof" style="display: none;">
+    <tr>
+      <table class="table table-bordered" id="table">
+      <h3>Kar Zarar 
+      <thead>
+     <tr>
+        <th>Döviz Kuru</th>
+        <th>Birimi</th>
+        <th>Adet</th>
+        <th>Toplam Tutarı</th>
+        <th>Kar Zarar</th>
+     </tr>
+      </thead>
+      <tbody id="lost">
+      <tr><td></td></tr>
+      </tbody>
+     </table>
+     </h3>
+  </div>
+  </div>
+<!-- durumlar -->
+  <div id="t" style="display: none;">
+    <tr>
+      <table class="table table-bordered" id="table">
+      <h3>Durumlar 
+      <thead>
+     <tr>
+        <th>Döviz Kuru</th>
+        <th>Birimi</th>
+        <th>Adet</th>
+        <th>Toplam Tutarı</th>
+        <th>Sattığı Tutarı</th>
+        <th>durum</th>
+     </tr>
+      </thead>
+      <tbody id="tt">
+      <tr><td></td></tr>
+      </tbody>
+     </table>
+     </h3>
+  </div>
+  </div>
+
+
+ 
+
+
+<script src="https://kit.fontawesome.com/9866bd20d6.js" crossorigin="anonymous"></script>
+<script src="../Public/binance.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" 
+integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+</body>
+</html>

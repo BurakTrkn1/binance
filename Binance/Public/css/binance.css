@@ -1,0 +1,67 @@
+body{
+    background-image:url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header{
+
+    font-size: 3rem;
+  font-style: italic;
+    font-weight: 900;
+    background-color:rgba(0,0, 0, 0.9);
+    height:  5rem;
+    color: white;
+    opacity: 85%;
+    text-align: center;
+
+}
+select{
+    margin-left: 7rem;
+    margin-bottom: 3rem;
+}
+/* button{
+    margin-top: 2rem;
+    margin-left: 54rem;
+} */
+#icon{
+    margin-left: 8rem;
+    transform: scale(0.8);
+}
+#icon:hover{
+  color: coral;
+  cursor:pointer
+}
+i{
+    margin-left: 9rem;
+    transform: scale(0.8);
+
+}
+i:hover{
+    color: red;
+    cursor: pointer;
+}
+
+table thead th{
+    color: white;
+}
+h3{
+    margin-left: 40rem;
+    color:aquamarine;
+    
+    
+}
+table tbody tr td {
+ color:wheat;
+}
+#w{
+    transform: scale(0.8);
+}
+#w:hover{
+    color: green;
+}
+i p{
+   font-size: 1rem;
+   color: white;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
